@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	// used for anything else
 	// Button button5 = new JoystickButton(stick,5); // Same as above, but for 5 too
 	// CANTalon canTalon = new CANTalon(0);
-	Talon motor6 = new Talon(6); /*
+	/* Talon motor6 = new Talon(6); 
 									 * adds a new talon motor - I assume this is the controller we're using - will
 									 * need to check if I need to change it off channel 6 - Sameer
 									 */
