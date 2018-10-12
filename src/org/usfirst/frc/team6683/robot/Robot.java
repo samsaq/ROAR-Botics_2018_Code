@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 	Joystick stick = new Joystick(0);
 	Timer timer = new Timer();
 	CameraServer server;
-	Button button11 = new JoystickButton(stick, 11);
+	//Button button11 = new JoystickButton(stick, 11);
 	// Button button6 = new JoystickButton(stick,6); // Remember to check if 6 is
 	// used for anything else
 	// Button button5 = new JoystickButton(stick,5); // Same as above, but for 5 too
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		// Drive for 2 seconds
-		if (timer.get() < 7.0) {
+		if (timer.get() < 2.0) {
 			myRobot.drive(0.5, 0.0); // dr ive forwards half speed
 		} else {
 			myRobot.drive(0.0, 0.0); // stop robot
@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
 
 		double x = stick.getX();
 		double y = stick.getY();
-		double slider = -(1.0 - stick.getRawAxis(3)) / 2.0;
+		double slider = -(1.0 - stick.getRawAxis(3)) / 2.0; ////axis 3 is the twisty one, and 4 is the throtle thingy, 1 is x, and side to side, and 2 is y and it is
 		SmartDashboard.putNumber("slider value", stick.getThrottle());
 		SmartDashboard.putNumber("scaled slider", slider);
 		// double slider = stick.getRawAxis(3);
