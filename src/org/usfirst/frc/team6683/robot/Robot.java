@@ -6,8 +6,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,14 +21,14 @@ public class Robot extends IterativeRobot {
 	Joystick stick = new Joystick(0);
 	Timer timer = new Timer();
 	CameraServer server;
-	//Button button11 = new JoystickButton(stick, 11);
+	// Button button11 = new JoystickButton(stick, 11);
 	// Button button6 = new JoystickButton(stick,6); // Remember to check if 6 is
 	// used for anything else
 	// Button button5 = new JoystickButton(stick,5); // Same as above, but for 5 too
 	// CANTalon canTalon = new CANTalon(0);
 	Talon motor6 = new Talon(6); /*
 									 * adds a new talon motor - I assume this is the controller we're using - will
-									 * need to check if I need to change it off channel 6
+									 * need to check if I need to change it off channel 6 - Sameer
 									 */
 
 	/**
@@ -41,7 +39,12 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture();
-	}
+		/*
+		 * UsbCamera uCamera = CameraServer.getInstance().startAutomaticCapture();
+		 * uCamera.setFPS(15); uCamera.setResolution(320, 240);
+		 */
+	} // If the above code is used, it should automatically add a camera to the
+		// dashboard, just remember to delete the 2 lines above it -Sameer
 
 	/**
 	 * This function is run once each time the robot enters autonomous mode
@@ -59,7 +62,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		// Drive for 2 seconds
 		if (timer.get() < 2.0) {
-			myRobot.drive(0.5, 0.0); // dr ive forwards half speed
+			myRobot.drive(0.5, 0.0); // drive forwards half speed (both sides with equal force)
 		} else {
 			myRobot.drive(0.0, 0.0); // stop robot
 		}
@@ -80,7 +83,8 @@ public class Robot extends IterativeRobot {
 
 		double x = stick.getX();
 		double y = stick.getY();
-		double slider = -(1.0 - stick.getRawAxis(3)) / 2.0; ////axis 3 is the twisty one, and 4 is the throtle thingy, 1 is x, and side to side, and 2 is y and it is
+		double slider = -(1.0 - stick.getRawAxis(3)) / 2.0; //// axis 3 is the twisty one, and 4 is the throtle thingy,
+															//// 1 is x, and side to side, and 2 is y and it is - Sameer
 		SmartDashboard.putNumber("slider value", stick.getThrottle());
 		SmartDashboard.putNumber("scaled slider", slider);
 		// double slider = stick.getRawAxis(3);
